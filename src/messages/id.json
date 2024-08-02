@@ -1,0 +1,24 @@
+{
+  "LoginPage": {
+    "title": "Masuk ke Dashboard",
+    "subTitle": "Masukkan email dan password Anda dibawah",
+    "email": "Email",
+    "password": "Password",
+    "errorEmail": "Silahkan masukkan email yang valid",
+    "errorPassword": "Silahkan masukkan password yang valid",
+    "button": "Masuk"
+  },
+  "404": {
+    "title": "Halaman Tidak Ditemukan",
+    "message": "Maaf, kami tidak dapat menemukan halaman yang Anda cari.",
+    "button": "Kembali ke Beranda"
+  },
+  "Sidebar": {
+    "overview": "Ringkasan",
+    "tickets": "Tiket",
+    "logout": "Keluar"
+  },
+  "HomePage": {
+    "title": "Halo Dunia!"
+  }
+}
