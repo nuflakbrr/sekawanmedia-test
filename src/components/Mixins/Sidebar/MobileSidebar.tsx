@@ -10,7 +10,10 @@ const MobileSidebar: FC = () => {
       <SheetTrigger className="md:hidden pr-4 hover:opacity-75 transition">
         <Menu />
       </SheetTrigger>
-      <SheetContent side="left" className="p-0 bg-white dark:bg-[#020817]">
+      <SheetContent
+        side="left"
+        className="p-0 border-r-0 bg-white dark:bg-[#020817]"
+      >
         <Sidebar />
       </SheetContent>
     </Sheet>

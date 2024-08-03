@@ -21,37 +21,45 @@ const UserNav: FC = () => {
   const { user, logout } = useAuth();
 
   return (
-    <Menu as="div" className="relative lg:ml-3 mr-11">
-      <MenuButton className="flex text-sm">
-        <Avatar className="w-8 h-8">
-          <AvatarFallback className="capitalize">
-            {user && user.name && user.name.charAt(0)}
-          </AvatarFallback>
-        </Avatar>
-      </MenuButton>
+    <div className="md:border-l flex items-center">
+      <div className="hidden md:flex items-center justify-center ml-3 md:mr-3 lg:mr-0">
+        <p className="text-sm text-gray-700 capitalize dark:text-white">
+          {user && user.role} User
+        </p>
+      </div>
 
-      <Transition
-        as={Fragment}
-        enter="transition ease-out duration-100"
-        enterFrom="transform opacity-0 scale-95"
-        enterTo="transform opacity-100 scale-100"
-        leave="transition ease-in duration-75"
-        leaveFrom="transform opacity-100 scale-100"
-        leaveTo="transform opacity-0 scale-95"
-      >
-        <MenuItems className="absolute right-0 z-10 w-48 py-1 mt-2 origin-top-right bg-white dark:bg-background rounded-md shadow-lg">
-          <MenuItem>
-            <button
-              onClick={() => logout()}
-              className="flex items-center min-w-full px-4 py-2 text-sm text-gray-700 dark:text-white"
-            >
-              <LogOut className="mr-2" />
-              {t('logout')}
-            </button>
-          </MenuItem>
-        </MenuItems>
-      </Transition>
-    </Menu>
+      <Menu as="div" className="relative lg:ml-3">
+        <MenuButton className="flex text-sm">
+          <Avatar className="w-8 h-8">
+            <AvatarFallback className="capitalize">
+              {user && user.name && user.name.charAt(0)}
+            </AvatarFallback>
+          </Avatar>
+        </MenuButton>
+
+        <Transition
+          as={Fragment}
+          enter="transition ease-out duration-100"
+          enterFrom="transform opacity-0 scale-95"
+          enterTo="transform opacity-100 scale-100"
+          leave="transition ease-in duration-75"
+          leaveFrom="transform opacity-100 scale-100"
+          leaveTo="transform opacity-0 scale-95"
+        >
+          <MenuItems className="absolute right-0 z-10 w-48 py-1 mt-2 origin-top-right bg-white dark:bg-background rounded-md shadow-lg">
+            <MenuItem>
+              <button
+                onClick={() => logout()}
+                className="flex items-center min-w-full px-4 py-2 text-sm text-gray-700 dark:text-white"
+              >
+                <LogOut className="mr-2" />
+                {t('logout')}
+              </button>
+            </MenuItem>
+          </MenuItems>
+        </Transition>
+      </Menu>
+    </div>
   );
 };
 

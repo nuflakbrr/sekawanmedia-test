@@ -5,6 +5,11 @@ import { redirect } from 'next/navigation';
 
 import { useAxios } from '@/hooks/useAxios';
 import { useAuth } from '@/hooks/useAuth';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
 
 const ContainerOverview: FC = () => {
   // Define translations
@@ -34,6 +39,12 @@ const ContainerOverview: FC = () => {
     <section className="max-w-7xl mx-auto">
       {t('title')}
       <h1>awdawda</h1>
+      <Tooltip>
+        <TooltipTrigger>Hover</TooltipTrigger>
+        <TooltipContent side="bottom">
+          <p>Add to library</p>
+        </TooltipContent>
+      </Tooltip>
     </section>
   );
 };
