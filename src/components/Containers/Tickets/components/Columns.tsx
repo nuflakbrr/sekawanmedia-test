@@ -100,7 +100,7 @@ const Columns: ColumnDef<ColumnProps>[] = [
   },
   {
     id: 'actions',
-    header: 'Aksi',
+    header: 'Action',
     cell: ({ row }) => <CellAction data={row.original} />,
   },
 ];

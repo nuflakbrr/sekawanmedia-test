@@ -1,5 +1,6 @@
 'use client';
 import { FC } from 'react';
+import { useTranslations } from 'next-intl';
 
 import { Separator } from '@/components/ui/separator';
 import { DataTable } from '@/components/ui/data-table';
@@ -12,11 +13,13 @@ interface TicketsClientProps {
 }
 
 const TicketsClient: FC<TicketsClientProps> = ({ data }) => {
+  const t = useTranslations('TicketsPage');
+
   return (
     <Card>
       <CardHeader>
         <div className="flex items-center justify-between">
-          <Heading title="All Ticket" />
+          <Heading title={t('title')} />
         </div>
       </CardHeader>
       <CardContent>

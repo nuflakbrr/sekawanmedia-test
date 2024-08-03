@@ -1,5 +1,6 @@
 'use client';
 import { FC } from 'react';
+import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
 import { Plus } from 'lucide-react';
 
@@ -17,11 +18,13 @@ interface TicketsClientProps {
 const TicketsClient: FC<TicketsClientProps> = ({ data }) => {
   const router = useRouter();
 
+  const t = useTranslations('TicketsPage');
+
   return (
     <Card>
       <CardHeader>
         <div className="flex items-center justify-between">
-          <Heading title="All Ticket" />
+          <Heading title={t('title')} />
           <Button
             onClick={() => router.push('/admin/create')}
             className="dark:text-white"
