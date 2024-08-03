@@ -17,13 +17,26 @@ export type ColumnProps = {
   updatedAt: string | Date;
 };
 
-const formatBadge = (status: string) => {
+const formatPriority = (status: string) => {
   switch (status) {
     case 'low':
       return 'success';
     case 'medium':
       return 'warning';
     case 'high':
+      return 'destructive';
+    default:
+      return 'default';
+  }
+};
+
+const formatStatus = (status: string) => {
+  switch (status) {
+    case 'approved':
+      return 'success';
+    case 'pending':
+      return 'warning';
+    case 'rejected':
       return 'destructive';
     default:
       return 'default';
@@ -78,7 +91,7 @@ const Columns: ColumnDef<ColumnProps>[] = [
     },
     cell: ({ row }) => (
       <Badge
-        variant={formatBadge(row.original.priority)}
+        variant={formatPriority(row.original.priority)}
         className="dark:text-white"
       >
         {row.original.priority}
@@ -98,6 +111,28 @@ const Columns: ColumnDef<ColumnProps>[] = [
         </Button>
       );
     },
+  },
+  {
+    accessorKey: 'status',
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
+        >
+          Status
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      );
+    },
+    cell: ({ row }) => (
+      <Badge
+        variant={formatStatus(row.original.status)}
+        className="dark:text-white"
+      >
+        {row.original.status}
+      </Badge>
+    ),
   },
   {
     id: 'actions',

@@ -95,3 +95,54 @@ export async function POST(req: Request) {
     );
   }
 }
+
+export async function PUT(req: Request) {
+  try {
+    const token = req.headers.get('Authorization');
+    const body = await req.json();
+
+    if (!token) {
+      return NextResponse.json(
+        { success: 0, message: 'Unauthorized!' },
+        { status: 401 },
+      );
+    }
+
+    const mockLocalStorage = {
+      getItem: (key: string) => {
+        if (key === 'ticket') {
+          return '';
+        }
+        return '';
+      },
+      setItem: (key: string, value: string) => {
+        if (key === 'ticket') {
+          return value;
+        }
+      },
+    };
+
+    const data = mockLocalStorage.getItem('ticket') || '';
+    const myTickets: Ticket[] = JSON.parse(data);
+
+    const updatedTickets = myTickets.map((item) => {
+      if (item.id === body.id) {
+        return body;
+      }
+      return item;
+    });
+
+    mockLocalStorage.setItem('ticket', JSON.stringify(updatedTickets));
+
+    return NextResponse.json(
+      { success: 1, message: 'Ticket updated!' },
+      { status: 200 },
+    );
+  } catch (error) {
+    console.error('TICKET_UPDATE_ERROR', error);
+    return NextResponse.json(
+      { success: 0, message: 'Internal server error!' },
+      { status: 500 },
+    );
+  }
+}
