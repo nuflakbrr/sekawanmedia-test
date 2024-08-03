@@ -14,7 +14,7 @@ export async function POST(req: Request) {
 
     const data = {
       email,
-      name: 'Naufal Akbar Nugroho',
+      name: email === 'admin@gmail.com' ? 'Admin' : 'Guest',
       role: email === 'admin@gmail.com' ? 'admin' : 'guest',
     };
     const token = btoa(`${email}:${password}`);

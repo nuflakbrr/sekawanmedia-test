@@ -19,8 +19,10 @@ const ContainerTicketsAdmin: FC = () => {
 
   const getTicket = useCallback(async () => {
     try {
-      const response = await axios.get('ticket');
-      setTickets(response.data.data);
+      setInterval(async () => {
+        const response = await axios.get('ticket');
+        setTickets(response.data.data);
+      }, 5000);
     } catch (error) {
       console.error('GET_TICKET_ERROR', error);
       toast({ description: 'Something went wrong', variant: 'destructive' });

@@ -28,24 +28,16 @@ const CellAction: FC<CellActionProps> = ({ data }) => {
 
   const [loading, setLoading] = useState(false);
 
-  const onApprove = async (dataTable: ColumnProps) => {
+  const onUpdate = async (dataTable: ColumnProps, status: string) => {
     setLoading(true);
-    try {
-      const { data } = await axios.delete(`courses/${dataTable}`);
-      setLoading(false);
-      router.refresh();
-      toast({ description: data.message });
-    } catch (error) {
-      toast({ description: 'Something went wrong', variant: 'destructive' });
-    } finally {
-      setLoading(false);
-    }
-  };
 
-  const onRejected = async (dataTable: ColumnProps) => {
-    setLoading(true);
+    const sendData = {
+      id: dataTable,
+      status: status,
+    };
+
     try {
-      const { data } = await axios.delete(`courses/${dataTable}`);
+      const { data } = await axios.put('ticket', sendData);
       setLoading(false);
       router.refresh();
       toast({ description: data.message });
@@ -61,16 +53,16 @@ const CellAction: FC<CellActionProps> = ({ data }) => {
       <DropdownMenu>
         <DropdownMenuTrigger asChild disabled={loading}>
           <Button variant="ghost" className="h-8 w-8 p-0">
-            <span className="sr-only">Buka menu</span>
+            <span className="sr-only">Open Menu</span>
             <MoreHorizontal className="h-4 w-4" />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
-          <DropdownMenuLabel>Aksi</DropdownMenuLabel>
-          <DropdownMenuItem onClick={() => onApprove(data.id)}>
+          <DropdownMenuLabel>Action</DropdownMenuLabel>
+          <DropdownMenuItem onClick={() => onUpdate(data.id, 'approved')}>
             Approve
           </DropdownMenuItem>
-          <DropdownMenuItem onClick={() => onRejected(data.id)}>
+          <DropdownMenuItem onClick={() => onUpdate(data.id, 'rejected')}>
             Rejected
           </DropdownMenuItem>
         </DropdownMenuContent>

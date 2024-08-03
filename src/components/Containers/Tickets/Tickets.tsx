@@ -19,13 +19,13 @@ const ContainerTickets: FC = () => {
 
   const getTicket = useCallback(async () => {
     try {
-      const response = await axios.get('ticket/my');
+      const response = await axios.get(`ticket/my?customerName=${user?.name}`);
       setMyTickets(response.data.data);
     } catch (error) {
       console.error('GET_TICKET_ERROR', error);
       toast({ description: 'Something went wrong', variant: 'destructive' });
     }
-  }, [axios, toast]);
+  }, [axios, toast, user?.name]);
 
   useEffect(() => {
     getTicket();

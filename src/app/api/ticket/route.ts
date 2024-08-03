@@ -1,11 +1,13 @@
 import { NextResponse } from 'next/server';
+import fs from 'fs';
 
 import { Ticket } from '@/interfaces/ticket';
-import { makeTickets } from '@/lib/faker';
+// import { makeTickets } from '@/lib/faker';
 
 export async function GET(req: Request) {
   try {
     const token = req.headers.get('Authorization');
+    const file = fs.readFileSync('./public/ticket.json', 'utf-8');
 
     if (!token) {
       return NextResponse.json(
@@ -14,29 +16,13 @@ export async function GET(req: Request) {
       );
     }
 
-    const mockLocalStorage = {
-      getItem: (key: string) => {
-        if (key === 'ticket') {
-          return '';
-        }
-        return '';
-      },
-    };
-
-    const data = mockLocalStorage.getItem('ticket') || '';
-    if (data) {
-      const guestTicket: Ticket[] = JSON.parse(data);
-      const allTickets = guestTicket.concat(
-        makeTickets(100 - guestTicket.length),
-      );
-      return NextResponse.json(
-        { success: 1, data: allTickets },
-        { status: 200 },
-      );
-    }
+    // fs.writeFileSync(
+    //   './public/ticket.json',
+    //   JSON.stringify(makeTickets(10), null, 2),
+    // );
 
     return NextResponse.json(
-      { success: 1, data: makeTickets(100) },
+      { success: 1, length: JSON.parse(file).length, data: JSON.parse(file) },
       { status: 200 },
     );
   } catch (error) {
@@ -52,6 +38,7 @@ export async function POST(req: Request) {
   try {
     const token = req.headers.get('Authorization');
     const body = await req.json();
+    const file = fs.readFileSync('./public/ticket.json', 'utf-8');
 
     if (!token) {
       return NextResponse.json(
@@ -60,28 +47,10 @@ export async function POST(req: Request) {
       );
     }
 
-    const mockLocalStorage = {
-      getItem: (key: string) => {
-        if (key === 'ticket') {
-          return '';
-        }
-        return '';
-      },
-      setItem: (key: string, value: string) => {
-        if (key === 'ticket') {
-          return value;
-        }
-      },
-    };
+    const tickets = JSON.parse(file);
+    tickets.unshift(body);
 
-    const data = mockLocalStorage.getItem('ticket') || '';
-    let myTickets: Ticket[] = [body];
-
-    if (data) {
-      myTickets = [body, ...JSON.parse(data)];
-    }
-
-    mockLocalStorage.setItem('ticket', JSON.stringify(myTickets));
+    fs.writeFileSync('./public/ticket.json', JSON.stringify(tickets, null, 2));
 
     return NextResponse.json(
       { success: 1, message: 'Ticket created!' },
@@ -100,6 +69,7 @@ export async function PUT(req: Request) {
   try {
     const token = req.headers.get('Authorization');
     const body = await req.json();
+    const file = fs.readFileSync('./public/ticket.json', 'utf-8');
 
     if (!token) {
       return NextResponse.json(
@@ -108,31 +78,18 @@ export async function PUT(req: Request) {
       );
     }
 
-    const mockLocalStorage = {
-      getItem: (key: string) => {
-        if (key === 'ticket') {
-          return '';
-        }
-        return '';
-      },
-      setItem: (key: string, value: string) => {
-        if (key === 'ticket') {
-          return value;
-        }
-      },
-    };
-
-    const data = mockLocalStorage.getItem('ticket') || '';
-    const myTickets: Ticket[] = JSON.parse(data);
-
-    const updatedTickets = myTickets.map((item) => {
+    const tickets = JSON.parse(file);
+    const updatedTickets = tickets.map((item: Ticket) => {
       if (item.id === body.id) {
-        return body;
+        return { ...item, ...body };
       }
       return item;
     });
 
-    mockLocalStorage.setItem('ticket', JSON.stringify(updatedTickets));
+    fs.writeFileSync(
+      './public/ticket.json',
+      JSON.stringify(updatedTickets, null, 2),
+    );
 
     return NextResponse.json(
       { success: 1, message: 'Ticket updated!' },

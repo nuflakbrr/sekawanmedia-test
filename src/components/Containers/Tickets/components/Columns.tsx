@@ -1,9 +1,10 @@
 import { ColumnDef } from '@tanstack/react-table';
-
-import CellAction from './CellAction';
-import { Button } from '@/components/ui/button';
 import { ArrowUpDown } from 'lucide-react';
+
+import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import CellAction from './CellAction';
 
 export type ColumnProps = {
   id: string | any;
@@ -16,7 +17,7 @@ export type ColumnProps = {
   updatedAt: string | Date;
 };
 
-const formatBadge = (status: string) => {
+const formatPriority = (status: string) => {
   switch (status) {
     case 'low':
       return 'success';
@@ -29,31 +30,44 @@ const formatBadge = (status: string) => {
   }
 };
 
+const formatStatus = (status: string) => {
+  switch (status) {
+    case 'approved':
+      return 'success';
+    case 'pending':
+      return 'warning';
+    case 'rejected':
+      return 'destructive';
+    default:
+      return 'default';
+  }
+};
+
 const Columns: ColumnDef<ColumnProps>[] = [
   {
     accessorKey: 'id',
     header: 'No',
     cell: ({ row }) => row.index + 1,
   },
-  // {
-  //   accessorKey: 'imageUrl',
-  //   header: 'Sampul',
-  //   cell: ({ row }) => (
-  //     <img
-  //       src={row.original.imageUrl || ''}
-  //       alt={row.original.title}
-  //       className="w-[150px] h-[84.375px] rounded-md object-cover object-center"
-  //       loading="lazy"
-  //     />
-  //   ),
-  // },
-  {
-    accessorKey: 'title',
-    header: 'Title',
-  },
   {
     accessorKey: 'customerName',
     header: 'Customer Name',
+    cell: ({ row }) => (
+      <div className="flex items-center gap-2">
+        <Avatar className="w-8 h-8">
+          <AvatarFallback className="capitalize">
+            {row &&
+              row.original.customerName &&
+              row.original.customerName.charAt(0)}
+          </AvatarFallback>
+        </Avatar>
+        {row.original.customerName}
+      </div>
+    ),
+  },
+  {
+    accessorKey: 'title',
+    header: 'Title',
   },
   {
     accessorKey: 'content',
@@ -77,7 +91,7 @@ const Columns: ColumnDef<ColumnProps>[] = [
     },
     cell: ({ row }) => (
       <Badge
-        variant={formatBadge(row.original.priority)}
+        variant={formatPriority(row.original.priority)}
         className="dark:text-white"
       >
         {row.original.priority}
@@ -97,6 +111,28 @@ const Columns: ColumnDef<ColumnProps>[] = [
         </Button>
       );
     },
+  },
+  {
+    accessorKey: 'status',
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
+        >
+          Status
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      );
+    },
+    cell: ({ row }) => (
+      <Badge
+        variant={formatStatus(row.original.status)}
+        className="dark:text-white"
+      >
+        {row.original.status}
+      </Badge>
+    ),
   },
   {
     id: 'actions',
