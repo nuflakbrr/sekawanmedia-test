@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import { FC } from 'react';
 import { useTranslations } from 'next-intl';
 import { redirect } from 'next/navigation';

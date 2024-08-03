@@ -1,5 +1,5 @@
 'use client';
-import { FC} from 'react';
+import { FC } from 'react';
 import { useTranslations } from 'next-intl';
 import { Bell, Search } from 'lucide-react';
 
