@@ -17,6 +17,7 @@
   "Sidebar": {
     "overview": "Overview",
     "tickets": "Tickets",
+    "settings": "Settings",
     "logout": "Logout"
   },
   "Alert": {
