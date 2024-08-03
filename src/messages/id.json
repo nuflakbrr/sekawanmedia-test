@@ -35,6 +35,10 @@
     "dark": "Gelap",
     "system": "Sistem"
   },
+  "Tooltip": {
+    "search": "Cari",
+    "notification": "Notifikasi"
+  },
   "AuthenticatedPage": {
     "alert": "Oops! Anda harus login terlebih dahulu.",
     "text": "Mengarahkan ke halaman login"

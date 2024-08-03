@@ -1,9 +1,8 @@
 'use client';
-import { FC } from 'react';
+import { FC} from 'react';
+import { useTranslations } from 'next-intl';
 import { Bell, Search } from 'lucide-react';
 
-// import TranslationToggle from '@/components/Common/TranslationToggle';
-// import ThemeToggle from '@/components/Common/ThemeToggle';
 import UserNav from '@/components/Common/UserNav';
 import {
   Tooltip,
@@ -13,18 +12,18 @@ import {
 import MobileSidebar from './MobileSidebar';
 
 const NavSidebar: FC = () => {
+  const t = useTranslations('Tooltip');
+
   return (
     <div className="p-4 border-b h-16 flex items-center bg-white dark:bg-[#020817] shadow-sm">
       <MobileSidebar />
       <div className="flex items-center ml-auto space-x-4">
-        {/* <TranslationToggle />
-        <ThemeToggle /> */}
         <Tooltip>
           <TooltipTrigger>
             <Search className="text-[#6B7280]" />
           </TooltipTrigger>
           <TooltipContent side="bottom">
-            <p>Search</p>
+            <p>{t('search')}</p>
           </TooltipContent>
         </Tooltip>
         <Tooltip>
@@ -32,7 +31,7 @@ const NavSidebar: FC = () => {
             <Bell className="text-[#6B7280]" />
           </TooltipTrigger>
           <TooltipContent side="bottom">
-            <p>Notification</p>
+            <p>{t('notification')}</p>
           </TooltipContent>
         </Tooltip>
         <UserNav />

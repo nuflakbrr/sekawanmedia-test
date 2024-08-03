@@ -35,6 +35,10 @@
     "dark": "Dark",
     "system": "System"
   },
+  "Tooltip": {
+    "search": "Search",
+    "notification": "Notification"
+  },
   "AuthenticatedPage": {
     "alert": "Oops! You need to login first.",
     "text": "Redirecting to login page"
