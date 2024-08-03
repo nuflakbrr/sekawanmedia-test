@@ -19,8 +19,8 @@ const ContainerSettings: FC = () => {
 
   const { user } = useAuth();
 
-  if (user?.role === 'admin') {
-    return redirect('/admin');
+  if (user?.role !== 'admin') {
+    return redirect('/');
   }
 
   return (
