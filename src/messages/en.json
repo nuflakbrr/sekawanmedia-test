@@ -24,6 +24,10 @@
     "success": "Success!",
     "error": "Oops! Something went wrong"
   },
+  "AuthenticatedPage": {
+    "alert": "Oops! You need to login first.",
+    "text": "Redirecting to login page"
+  },
   "HomePage": {
     "title": "Hello World!"
   }

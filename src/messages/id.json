@@ -24,6 +24,10 @@
     "success": "Berhasil!",
     "error": "Ups! Terjadi kesalahan"
   },
+  "AuthenticatedPage": {
+    "alert": "Oops! Anda harus login terlebih dahulu.",
+    "text": "Mengarahkan ke halaman login"
+  },
   "HomePage": {
     "title": "Halo Dunia!"
   }

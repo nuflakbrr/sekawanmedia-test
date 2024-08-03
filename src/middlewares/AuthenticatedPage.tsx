@@ -1,5 +1,6 @@
 'use client';
 import { FC, ReactNode, useEffect } from 'react';
+import { useTranslations } from 'next-intl';
 import { redirect } from 'next/navigation';
 
 import { useAuth } from '@/hooks/useAuth';
@@ -11,24 +12,26 @@ type Props = {
 };
 
 const AuthenticatedPage: FC<Props> = ({ children }) => {
+  const t = useTranslations('AuthenticatedPage');
+
   const { isLoading, user } = useAuth();
   const { toast } = useToast();
 
   useEffect(() => {
     if (!isLoading && !user) {
       toast({
-        description: 'Oops! Anda harus login terlebih dahulu.',
+        description: t('alert'),
         variant: 'destructive',
       });
       localStorage.clear();
       redirect('/login');
     }
-  }, [isLoading, toast, user]);
+  }, [isLoading, toast, user, t]);
 
   if (!isLoading && !user) {
     return (
       <div className="flex items-center justify-center h-screen">
-        Mengarahkan ke halaman login...
+        {t('text')}...
       </div>
     );
   }
