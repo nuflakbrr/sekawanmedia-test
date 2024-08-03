@@ -2,7 +2,7 @@
 import { FC } from 'react';
 import { useTranslations } from 'next-intl';
 import { usePathname } from 'next/navigation';
-import { ChartBar, Cog, Ticket } from 'lucide-react';
+import { ChartBar, Settings, Ticket } from 'lucide-react';
 
 import SidebarItem from './SidebarItem';
 
@@ -32,7 +32,7 @@ const SidebarRoutes: FC = () => {
       href: '/admin/settings',
       label: t('settings'),
       active: pathname === '/admin/settings',
-      icon: Cog,
+      icon: Settings,
     },
   ];
 
@@ -47,7 +47,7 @@ const SidebarRoutes: FC = () => {
       href: '/settings',
       label: t('settings'),
       active: pathname === '/settings',
-      icon: Cog,
+      icon: Settings,
     },
   ];
 

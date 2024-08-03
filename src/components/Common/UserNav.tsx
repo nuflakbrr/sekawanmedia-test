@@ -1,6 +1,7 @@
 'use client';
 import { FC, Fragment } from 'react';
 import { useTranslations } from 'next-intl';
+import Link from 'next/link';
 import {
   Menu,
   MenuButton,
@@ -8,7 +9,7 @@ import {
   MenuItems,
   Transition,
 } from '@headlessui/react';
-import { LogOut } from 'lucide-react';
+import { LogOut, Settings } from 'lucide-react';
 
 import { useAuth } from '@/hooks/useAuth';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
@@ -47,6 +48,15 @@ const UserNav: FC = () => {
           leaveTo="transform opacity-0 scale-95"
         >
           <MenuItems className="absolute right-0 z-10 w-48 py-1 mt-2 origin-top-right bg-white dark:bg-background rounded-md shadow-lg">
+            <MenuItem>
+              <Link
+                href={user?.role === 'admin' ? '/admin/settings' : '/settings'}
+                className="flex items-center min-w-full px-4 py-2 text-sm text-gray-700 dark:text-white"
+              >
+                <Settings className="mr-2" />
+                {t('settings')}
+              </Link>
+            </MenuItem>
             <MenuItem>
               <button
                 onClick={() => logout()}

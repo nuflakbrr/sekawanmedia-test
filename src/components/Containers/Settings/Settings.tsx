@@ -18,7 +18,7 @@ const ContainerSettings: FC = () => {
     <section className="flex-col">
       <div className="flex-1 p-8 pt-6 space-y-4">
         <div className="grid grid-cols-12">
-          <div className="col-span-4">
+          <div className="col-span-12 lg:col-span-4">
             <Card>
               <CardHeader>
                 <CardTitle>{t('title')}</CardTitle>
