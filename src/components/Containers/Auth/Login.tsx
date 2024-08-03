@@ -6,6 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
+import { useAxios } from '@/hooks/useAxios';
 import { useAuth } from '@/hooks/useAuth';
 import { useToast } from '@/components/ui/use-toast';
 import {
@@ -29,10 +30,12 @@ import { Input } from '@/components/ui/input';
 const ContainerLogin: FC = () => {
   // Define translations
   const t = useTranslations('LoginPage');
+  const tAlert = useTranslations('Alert');
 
   // Define hooks
   const { toast } = useToast();
-  const { setUser } = useAuth();
+  const { setAccessToken, setUser } = useAuth();
+  const axios = useAxios();
   const router = useRouter();
 
   // Define form schema
@@ -66,35 +69,22 @@ const ContainerLogin: FC = () => {
   // Handle submit form
   const onSubmit = async (dataSubmit: LoginFormValues) => {
     try {
-      if (
-        dataSubmit.email === 'user@gmail.com' &&
-        dataSubmit.password === 'password'
-      ) {
-        setUser({
-          ...dataSubmit,
-          name: 'Naufal Akbar Nugroho',
-        });
-        router.refresh();
-        router.push('/');
-        toast({
-          description: 'Login Sukses! Selamat Datang Kembali',
-        });
-      } else {
-        toast({
-          description: 'Oops! Username atau Password Salah!',
-          variant: 'destructive',
-        });
-      }
+      const { data } = await axios.post('auth', dataSubmit);
+      setAccessToken(data.token);
+      setUser(data.data);
+      router.refresh();
+      router.push('/');
+      toast({ description: `${tAlert('success')} ${t('alert')}` });
     } catch (error) {
       toast({
-        description: 'Oops! Terjadi kesalahan.',
+        description: tAlert('error'),
         variant: 'destructive',
       });
     }
   };
 
   return (
-    <Card className="w-[400px]">
+    <Card className="w-[450px] shadow-md">
       <CardHeader className="flex flex-col items-center justify-center mx-auto">
         <CardTitle className="flex flex-col items-center gap-2">
           <svg

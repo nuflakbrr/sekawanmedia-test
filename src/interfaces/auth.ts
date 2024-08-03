@@ -1,6 +1,6 @@
 export interface Auth {
   email: string;
   name: string;
-  role?: string;
+  role?: 'admin' | 'guest';
   password: string;
 }

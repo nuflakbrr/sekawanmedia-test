@@ -16,7 +16,7 @@ const AuthLayout: FC<Props> = ({ children }) => {
   }, [user]);
 
   return (
-    <main className="flex items-center justify-center w-full min-h-screen">
+    <main className="flex items-center justify-center w-full min-h-screen bg-[#363740]">
       {children}
     </main>
   );

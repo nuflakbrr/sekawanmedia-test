@@ -39,11 +39,11 @@ const UserNav: FC = () => {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <MenuItems className="absolute right-0 z-10 w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg">
+        <MenuItems className="absolute right-0 z-10 w-48 py-1 mt-2 origin-top-right bg-white dark:bg-background rounded-md shadow-lg">
           <MenuItem>
             <button
               onClick={() => logout()}
-              className="flex items-center min-w-full px-4 py-2 text-sm text-gray-700"
+              className="flex items-center min-w-full px-4 py-2 text-sm text-gray-700 dark:text-white"
             >
               <LogOut className="mr-2" />
               {t('logout')}
