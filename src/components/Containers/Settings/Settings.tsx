@@ -23,6 +23,10 @@ const ContainerSettings: FC = () => {
     return redirect('/admin');
   }
 
+  if (user?.role === 'guest') {
+    return redirect('/');
+  }
+
   return (
     <section className="flex-col">
       <div className="flex-1 p-8 pt-6 space-y-4">

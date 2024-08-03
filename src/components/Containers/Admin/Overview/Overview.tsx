@@ -32,7 +32,7 @@ const ContainerOverview: FC = () => {
   }, [getTicket]);
 
   if (user?.role !== 'admin') {
-    return redirect('/tickets');
+    return redirect('/');
   }
 
   return (
