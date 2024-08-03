@@ -1,6 +1,9 @@
+'use client'
 import { FC } from 'react';
 import { useTranslations } from 'next-intl';
+import { redirect } from 'next/navigation';
 
+import { useAuth } from '@/hooks/useAuth';
 import {
   Card,
   CardContent,
@@ -13,6 +16,12 @@ import ThemeSelect from '@/components/Common/ThemeSelect';
 
 const ContainerSettings: FC = () => {
   const t = useTranslations('SettingsPage');
+
+  const { user } = useAuth();
+
+  if (user?.role === 'admin') {
+    return redirect('/admin');
+  }
 
   return (
     <section className="flex-col">
