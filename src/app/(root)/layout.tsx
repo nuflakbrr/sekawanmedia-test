@@ -18,7 +18,9 @@ const DashboardLayout: FC<Props> = ({ children }) => {
         <div className="fixed inset-y-0 z-50 flex-col hidden h-full md:flex w-60">
           <Sidebar />
         </div>
-        <section className="md:pl-60 pt-[80px] h-full">{children}</section>
+        <section className="md:pl-60 pt-[80px] min-h-screen bg-[#F3F4F6] dark:bg-background">
+          {children}
+        </section>
       </main>
     </AuthenticatedPage>
   );
