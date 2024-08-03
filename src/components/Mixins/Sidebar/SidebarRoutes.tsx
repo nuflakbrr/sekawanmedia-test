@@ -2,7 +2,7 @@
 import { FC } from 'react';
 import { useTranslations } from 'next-intl';
 import { usePathname } from 'next/navigation';
-import { ChartBar, Ticket } from 'lucide-react';
+import { ChartBar, Cog, Ticket } from 'lucide-react';
 
 import SidebarItem from './SidebarItem';
 
@@ -17,9 +17,9 @@ const SidebarRoutes: FC = () => {
 
   const adminRoutes = [
     {
-      href: '/admin/overview',
+      href: '/admin',
       label: t('overview'),
-      active: pathname === '/admin/overview',
+      active: pathname === '/admin',
       icon: ChartBar,
     },
     {
@@ -28,20 +28,26 @@ const SidebarRoutes: FC = () => {
       active: pathname === '/admin/tickets',
       icon: Ticket,
     },
+    {
+      href: '/admin/settings',
+      label: t('settings'),
+      active: pathname === '/admin/settings',
+      icon: Cog,
+    },
   ];
 
   const memberRoutes = [
     {
       href: '/',
-      label: t('overview'),
+      label: t('tickets'),
       active: pathname === '/',
-      icon: ChartBar,
+      icon: Ticket,
     },
     {
-      href: '/tickets',
-      label: t('tickets'),
-      active: pathname === '/tickets',
-      icon: Ticket,
+      href: '/settings',
+      label: t('settings'),
+      active: pathname === '/settings',
+      icon: Cog,
     },
   ];
 
