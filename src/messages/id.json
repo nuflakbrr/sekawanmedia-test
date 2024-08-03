@@ -20,6 +20,15 @@
     "language": "Bahasa",
     "theme": "Tema"
   },
+  "TicketsPage": {
+    "title": "Semua Tiket",
+    "titleTicket": "Judul",
+    "customerName": "Nama Pelanggan",
+    "content": "Konten",
+    "priority": "Prioritas",
+    "createdAt": "Dibuat Pada",
+    "action": "Aksi"
+  },
   "Sidebar": {
     "overview": "Ringkasan",
     "tickets": "Tiket",

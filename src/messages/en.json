@@ -20,6 +20,15 @@
     "language": "Language",
     "theme": "Theme"
   },
+  "TicketsPage": {
+    "title": "All Tickets",
+    "titleTicket": "Title",
+    "customerName": "Customer Name",
+    "content": "Content",
+    "priority": "Priority",
+    "createdAt": "Created At",
+    "action": "Action"
+  },
   "Sidebar": {
     "overview": "Overview",
     "tickets": "Tickets",
