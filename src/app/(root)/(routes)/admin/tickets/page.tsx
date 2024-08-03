@@ -1,7 +1,9 @@
 import { FC } from 'react';
 
-const Ticket: FC = () => {
-  return <div>Ticket</div>;
+import ContainerTicketsAdmin from '@/components/Containers/Admin/Tickets/Tickets';
+
+const TicketsPage: FC = () => {
+  return <ContainerTicketsAdmin />;
 };
 
-export default Ticket;
+export default TicketsPage;

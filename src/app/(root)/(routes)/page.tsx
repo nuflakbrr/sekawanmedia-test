@@ -2,8 +2,8 @@ import { FC } from 'react';
 
 import ContainerTickets from '@/components/Containers/Tickets/Tickets';
 
-const Tickets: FC = () => {
+const TicketsPage: FC = () => {
   return <ContainerTickets />;
 };
 
-export default Tickets;
+export default TicketsPage;

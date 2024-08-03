@@ -2,8 +2,8 @@ import { FC } from 'react';
 
 import ContainerOverview from '@/components/Containers/Admin/Overview/Overview';
 
-const Overview: FC = () => {
+const OverviewPage: FC = () => {
   return <ContainerOverview />;
 };
 
-export default Overview;
+export default OverviewPage;
