@@ -8,6 +8,7 @@ import './globals.css';
 import { AuthProvider } from '@/context/AuthContext';
 import ThemeProvider from '@/providers/ThemeProvider';
 import ToastProvider from '@/providers/ToastProvider';
+import TooltipProvider from '@/providers/TooltipProvider';
 
 const fontSans = FontSans({ subsets: ['latin'], variable: '--font-sans' });
 
@@ -30,8 +31,10 @@ export default async function RootLayout({
         <body className={fontSans.className}>
           <NextIntlClientProvider messages={messages}>
             <ThemeProvider attribute="class" defaultTheme="light">
-              <ToastProvider />
-              {children}
+              <TooltipProvider>
+                <ToastProvider />
+                {children}
+              </TooltipProvider>
             </ThemeProvider>
           </NextIntlClientProvider>
         </body>
