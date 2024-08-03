@@ -15,6 +15,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import PreviewModal from '@/components/Common/Modal/PreviewModal';
 
 interface CellActionProps {
   data: ColumnProps;
@@ -26,7 +27,8 @@ const CellAction: FC<CellActionProps> = ({ data }) => {
   const axios = useAxios(accessToken);
   const router = useRouter();
 
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const onUpdate = async (dataTable: ColumnProps, status: string) => {
     setLoading(true);
@@ -50,6 +52,11 @@ const CellAction: FC<CellActionProps> = ({ data }) => {
 
   return (
     <>
+      <PreviewModal
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        data={data}
+      />
       <DropdownMenu>
         <DropdownMenuTrigger asChild disabled={loading}>
           <Button variant="ghost" className="h-8 w-8 p-0">
@@ -59,6 +66,9 @@ const CellAction: FC<CellActionProps> = ({ data }) => {
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
           <DropdownMenuLabel>Action</DropdownMenuLabel>
+          <DropdownMenuItem onClick={() => setIsOpen(true)}>
+            Detail
+          </DropdownMenuItem>
           <DropdownMenuItem onClick={() => onUpdate(data.id, 'approved')}>
             Approve
           </DropdownMenuItem>

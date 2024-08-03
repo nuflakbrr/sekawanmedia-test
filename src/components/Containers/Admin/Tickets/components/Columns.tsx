@@ -92,7 +92,7 @@ const Columns: ColumnDef<ColumnProps>[] = [
     cell: ({ row }) => (
       <Badge
         variant={formatPriority(row.original.priority)}
-        className="dark:text-white"
+        className="dark:text-white capitalize"
       >
         {row.original.priority}
       </Badge>
@@ -128,7 +128,7 @@ const Columns: ColumnDef<ColumnProps>[] = [
     cell: ({ row }) => (
       <Badge
         variant={formatStatus(row.original.status)}
-        className="dark:text-white"
+        className="dark:text-white capitalize"
       >
         {row.original.status}
       </Badge>
