@@ -6,7 +6,8 @@
     "password": "Password",
     "errorEmail": "Please enter a valid email",
     "errorPassword": "Please enter a valid password",
-    "button": "Login"
+    "button": "Login",
+    "alert": "You have successfully logged in"
   },
   "404": {
     "title": "Page Not Found",
@@ -17,6 +18,10 @@
     "overview": "Overview",
     "tickets": "Tickets",
     "logout": "Logout"
+  },
+  "Alert": {
+    "success": "Success!",
+    "error": "Oops! Something went wrong"
   },
   "HomePage": {
     "title": "Hello World!"

@@ -6,7 +6,8 @@
     "password": "Password",
     "errorEmail": "Silahkan masukkan email yang valid",
     "errorPassword": "Silahkan masukkan password yang valid",
-    "button": "Masuk"
+    "button": "Masuk",
+    "alert": "Anda berhasil masuk"
   },
   "404": {
     "title": "Halaman Tidak Ditemukan",
@@ -17,6 +18,10 @@
     "overview": "Ringkasan",
     "tickets": "Tiket",
     "logout": "Keluar"
+  },
+  "Alert": {
+    "success": "Berhasil!",
+    "error": "Ups! Terjadi kesalahan"
   },
   "HomePage": {
     "title": "Halo Dunia!"
