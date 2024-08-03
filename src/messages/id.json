@@ -14,6 +14,12 @@
     "message": "Maaf, kami tidak dapat menemukan halaman yang Anda cari.",
     "button": "Kembali ke Beranda"
   },
+  "SettingsPage": {
+    "title": "Pengaturan",
+    "subTitle": "Kelola pengaturan aplikasi ini",
+    "language": "Bahasa",
+    "theme": "Tema"
+  },
   "Sidebar": {
     "overview": "Ringkasan",
     "tickets": "Tiket",
@@ -23,6 +29,11 @@
   "Alert": {
     "success": "Berhasil!",
     "error": "Ups! Terjadi kesalahan"
+  },
+  "Theme": {
+    "light": "Terang",
+    "dark": "Gelap",
+    "system": "Sistem"
   },
   "AuthenticatedPage": {
     "alert": "Oops! Anda harus login terlebih dahulu.",

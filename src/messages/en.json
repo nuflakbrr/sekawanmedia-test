@@ -14,6 +14,12 @@
     "message": "Sorry, we couldn't find the page you're looking for.",
     "button": "Back to Home"
   },
+  "SettingsPage": {
+    "title": "Settings",
+    "subTitle": "Manage your setting for this application",
+    "language": "Language",
+    "theme": "Theme"
+  },
   "Sidebar": {
     "overview": "Overview",
     "tickets": "Tickets",
@@ -23,6 +29,11 @@
   "Alert": {
     "success": "Success!",
     "error": "Oops! Something went wrong"
+  },
+  "Theme": {
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
   },
   "AuthenticatedPage": {
     "alert": "Oops! You need to login first.",
