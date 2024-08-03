@@ -1,9 +1,9 @@
 import { FC } from 'react';
 
-import ContainerSettings from '@/components/Containers/Settings/Settings';
+import ContainerSettingsAdmin from '@/components/Containers/Admin/Settings/Settings';
 
 const SettingPage: FC = () => {
-  return <ContainerSettings />;
+  return <ContainerSettingsAdmin />;
 };
 
 export default SettingPage;

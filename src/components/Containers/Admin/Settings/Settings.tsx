@@ -14,7 +14,7 @@ import {
 import TranslationSelect from '@/components/Common/TranslationSelect';
 import ThemeSelect from '@/components/Common/ThemeSelect';
 
-const ContainerSettings: FC = () => {
+const ContainerSettingsAdmin: FC = () => {
   const t = useTranslations('SettingsPage');
 
   const { user } = useAuth();
@@ -52,4 +52,4 @@ const ContainerSettings: FC = () => {
   );
 };
 
-export default ContainerSettings;
+export default ContainerSettingsAdmin;
