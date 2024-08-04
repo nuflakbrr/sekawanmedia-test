@@ -8,13 +8,6 @@ export interface Modal {
   children?: React.ReactNode;
 }
 
-export interface AlertModal {
-  isOpen: boolean;
-  onClose: () => void;
-  onConfirm: () => void;
-  loading: boolean;
-}
-
 export interface PreviewModal {
   isOpen: boolean;
   data: ColumnProps;
