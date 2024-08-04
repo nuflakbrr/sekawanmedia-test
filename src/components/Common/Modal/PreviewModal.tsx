@@ -18,6 +18,7 @@ const PreviewModal: FC<PreviewModalProps> = ({
   // Define state
   const [isMounted, setIsMounted] = useState(false);
 
+  // Define translation
   const t = useTranslations('PreviewModal');
 
   // Define Hooks

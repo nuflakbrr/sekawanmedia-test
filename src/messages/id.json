@@ -71,6 +71,15 @@
     "rejected": "Tolak",
     "approved": "Setujui"
   },
+  "CreateModal": {
+    "titleModal": "Buat Tiket",
+    "subTitle": "Buat tiket sesuai dengan kebutuhan Anda.",
+    "title": "Judul Tiket",
+    "priority": "Prioritas",
+    "content": "Konten",
+    "close": "Tutup",
+    "submit": "Buat Tiket"
+  },
   "DataTable": {
     "nodata": "Tidak ada data.",
     "prev": "Sebelumnya",

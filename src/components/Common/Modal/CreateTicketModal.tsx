@@ -1,5 +1,6 @@
 'use client';
 import { FC, useEffect, useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
@@ -33,6 +34,9 @@ import { Textarea } from '@/components/ui/textarea';
 const CreateTicketModal: FC<CreateTicketModalProps> = ({ isOpen, onClose }) => {
   // Define state
   const [isMounted, setIsMounted] = useState<boolean>(false);
+
+  // Define translation
+  const t = useTranslations('CreateModal');
 
   // Define hooks
   const { toast } = useToast();
@@ -116,8 +120,8 @@ const CreateTicketModal: FC<CreateTicketModalProps> = ({ isOpen, onClose }) => {
 
   return (
     <Modal
-      title="Buat Tiket"
-      description="Buat tiket sesuai dengan kebutuhan Anda."
+      title={t('titleModal')}
+      description={t('subTitle')}
       isOpen={isOpen}
       onClose={onClose}
     >
@@ -128,7 +132,7 @@ const CreateTicketModal: FC<CreateTicketModalProps> = ({ isOpen, onClose }) => {
             name="priority"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Priority</FormLabel>
+                <FormLabel>{t('priority')}</FormLabel>
                 <FormControl>
                   <Select
                     disabled={isSubmitting}
@@ -137,7 +141,7 @@ const CreateTicketModal: FC<CreateTicketModalProps> = ({ isOpen, onClose }) => {
                     defaultValue={field.value}
                   >
                     <SelectTrigger>
-                      <SelectValue placeholder="Priority" />
+                      <SelectValue placeholder={t('priority')} />
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="high">High</SelectItem>
@@ -156,11 +160,11 @@ const CreateTicketModal: FC<CreateTicketModalProps> = ({ isOpen, onClose }) => {
             name="title"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Title</FormLabel>
+                <FormLabel>{t('title')}</FormLabel>
                 <FormControl>
                   <Input
                     disabled={isSubmitting}
-                    placeholder={`Title`}
+                    placeholder={t('title')}
                     {...field}
                   />
                 </FormControl>
@@ -174,11 +178,11 @@ const CreateTicketModal: FC<CreateTicketModalProps> = ({ isOpen, onClose }) => {
             name="content"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Content</FormLabel>
+                <FormLabel>{t('content')}</FormLabel>
                 <FormControl>
                   <Textarea
                     disabled={isSubmitting}
-                    placeholder={`Content`}
+                    placeholder={t('content')}
                     {...field}
                   />
                 </FormControl>
@@ -188,14 +192,14 @@ const CreateTicketModal: FC<CreateTicketModalProps> = ({ isOpen, onClose }) => {
           />
           <div className="pt-6 space-x-2 flex items-center justify-end w-full">
             <Button variant="outline" onClick={onClose}>
-              Tutup
+              {t('close')}
             </Button>
             <Button
               variant="default"
               type="submit"
               disabled={!isValid || isSubmitting}
             >
-              Buat Tiket
+              {t('submit')}
             </Button>
           </div>
         </form>

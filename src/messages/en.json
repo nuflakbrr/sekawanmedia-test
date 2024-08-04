@@ -71,6 +71,15 @@
     "rejected": "Reject",
     "approved": "Approve"
   },
+  "CreateModal": {
+    "titleModal": "Create Ticket",
+    "subTitle": "Create ticket according to your needs.",
+    "title": "Title Ticket",
+    "priority": "Priority",
+    "content": "Content",
+    "close": "Close",
+    "submit": "Create Ticket"
+  },
   "DataTable": {
     "nodata": "No results.",
     "prev": "Previous",
