@@ -55,11 +55,11 @@ const ContainerTicketsAdmin: FC = () => {
   }));
 
   return (
-    <div className="flex-col">
+    <section className="flex-col">
       <div className="flex-1 p-8 pt-6 space-y-4">
         <TicketsClient data={formattedTickets} />
       </div>
-    </div>
+    </section>
   );
 };
 

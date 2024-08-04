@@ -31,7 +31,7 @@ const UserNav: FC = () => {
 
       <Menu as="div" className="relative lg:ml-3">
         <MenuButton className="flex text-sm">
-          <Avatar className="w-8 h-8">
+          <Avatar className="w-12 h-12">
             <AvatarFallback className="capitalize">
               {user && user.name && user.name.charAt(0)}
             </AvatarFallback>

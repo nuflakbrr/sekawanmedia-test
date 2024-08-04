@@ -42,7 +42,7 @@ const ContainerSettingsAdmin: FC = () => {
                   <TranslationSelect />
                 </div>
 
-                <div className="">
+                <div>
                   <h3 className="mb-2">{t('theme')}</h3>
                   <ThemeSelect />
                 </div>

@@ -72,9 +72,12 @@ const ContainerLogin: FC = () => {
       const { data } = await axios.post('auth', dataSubmit);
       setAccessToken(data.token);
       setUser(data.data);
-      data.data.role === 'admin'
-        ? router.push('/admin')
-        : router.push('/tickets');
+
+      if (data.data.role === 'admin') {
+        router.push('/admin');
+      }
+      router.push('/');
+
       toast({ description: `${tAlert('success')} ${t('alert')}` });
     } catch (error) {
       toast({

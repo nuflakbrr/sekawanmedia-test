@@ -33,7 +33,7 @@ const NavSidebar: FC = () => {
     : titlePageGuest.find((title) => pathname === `/${title}` || pathname === '/');
 
   return (
-    <div className="p-4 border-b h-16 flex items-center bg-white dark:bg-[#020817] shadow-sm">
+    <div className="p-4 h-16 flex items-center bg-[#F3F4F6] dark:bg-background">
       <MobileSidebar />
       <h1 className="text-xl font-bold text-[#1E293B] dark:text-white capitalize">
         {titlePage}
