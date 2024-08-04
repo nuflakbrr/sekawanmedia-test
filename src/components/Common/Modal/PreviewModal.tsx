@@ -1,13 +1,22 @@
 'use client';
 import { FC, useEffect, useState } from 'react';
 
+import { useAuth } from '@/hooks/useAuth';
 import { PreviewModal as PreviewModalProps } from '@/interfaces/modal';
 import { Button } from '@/components/ui/button';
-import Modal from './Modal';
 import { Badge } from '@/components/ui/badge';
+import Modal from './Modal';
 
-const PreviewModal: FC<PreviewModalProps> = ({ isOpen, onClose, data }) => {
+const PreviewModal: FC<PreviewModalProps> = ({
+  isOpen,
+  data,
+  onClose,
+  onApproved,
+  onRejected,
+}) => {
   const [isMounted, setIsMounted] = useState(false);
+
+  const { user } = useAuth();
 
   useEffect(() => {
     setIsMounted(true);
@@ -106,6 +115,16 @@ const PreviewModal: FC<PreviewModalProps> = ({ isOpen, onClose, data }) => {
         <Button variant="outline" onClick={onClose}>
           Tutup
         </Button>
+        {user && user.role === 'admin' && (
+          <>
+            <Button variant="destructive" onClick={onRejected}>
+              Tolak
+            </Button>
+            <Button variant="success" onClick={onApproved}>
+              Setujui
+            </Button>
+          </>
+        )}
       </div>
     </Modal>
   );

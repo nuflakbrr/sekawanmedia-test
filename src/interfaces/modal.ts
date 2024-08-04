@@ -17,6 +17,13 @@ export interface AlertModal {
 
 export interface PreviewModal {
   isOpen: boolean;
-  onClose: () => void;
   data: ColumnProps;
+  onClose: () => void;
+  onRejected?: () => void;
+  onApproved?: () => void;
+}
+
+export interface CreateTicketModal {
+  isOpen: boolean;
+  onClose: () => void;
 }

@@ -1,7 +1,7 @@
 'use client';
 import { FC, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { MoreHorizontal } from 'lucide-react';
+import { CircleCheck, CircleX, Info, MoreHorizontal } from 'lucide-react';
 
 import { useAuth } from '@/hooks/useAuth';
 import { useAxios } from '@/hooks/useAxios';
@@ -36,6 +36,7 @@ const CellAction: FC<CellActionProps> = ({ data }) => {
     const sendData = {
       id: dataTable,
       status: status,
+      updatedAt: new Date().toISOString(),
     };
 
     try {
@@ -56,6 +57,14 @@ const CellAction: FC<CellActionProps> = ({ data }) => {
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
         data={data}
+        onRejected={() => {
+          onUpdate(data.id, 'rejected');
+          setIsOpen(false);
+        }}
+        onApproved={() => {
+          onUpdate(data.id, 'approved');
+          setIsOpen(false);
+        }}
       />
       <DropdownMenu>
         <DropdownMenuTrigger asChild disabled={loading}>
@@ -67,12 +76,15 @@ const CellAction: FC<CellActionProps> = ({ data }) => {
         <DropdownMenuContent align="end">
           <DropdownMenuLabel>Action</DropdownMenuLabel>
           <DropdownMenuItem onClick={() => setIsOpen(true)}>
+            <Info className="h-4 w-4 mr-2" />
             Detail
           </DropdownMenuItem>
           <DropdownMenuItem onClick={() => onUpdate(data.id, 'approved')}>
+            <CircleCheck className="h-4 w-4 mr-2" />
             Approve
           </DropdownMenuItem>
           <DropdownMenuItem onClick={() => onUpdate(data.id, 'rejected')}>
+            <CircleX className="h-4 w-4 mr-2" />
             Rejected
           </DropdownMenuItem>
         </DropdownMenuContent>
