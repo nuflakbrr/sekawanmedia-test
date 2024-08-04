@@ -1,38 +1,49 @@
 'use client';
-import { FC, useCallback, useEffect } from 'react';
-import { useTranslations } from 'next-intl';
+import { FC, useCallback, useEffect, useState } from 'react';
 import { redirect } from 'next/navigation';
 
 import { useAxios } from '@/hooks/useAxios';
 import { useAuth } from '@/hooks/useAuth';
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from '@/components/ui/tooltip';
+import { TicketOverview, TicketStatus } from '@/interfaces/ticket';
+import Stats from './components/Stats';
+import Chart from './components/Chart';
+import SummaryTask from './components/SummaryTask';
 
 const ContainerOverview: FC = () => {
-  // Define translations
-  const t = useTranslations('HomePage');
+  // Define state
+  const [overview, setOverview] = useState<TicketOverview | null>(null);
+  const [status, setStatus] = useState<TicketStatus | null>(null);
+  const [graph, setGraph] = useState<any[]>([]);
 
   // Define hooks
   const { accessToken, user } = useAuth();
   const axios = useAxios(accessToken);
 
   // Data fetching
-  const getTicket = useCallback(async () => {
+  const getTicketOverview = useCallback(async () => {
     try {
-      const response = await axios.get('ticket/graph');
-      console.log(response.data);
+      const response = await axios.get('ticket/overview');
+      setOverview(response.data.data);
+      setStatus(response.data.status);
     } catch (error) {
       console.error('GET_TICKET_ERROR', error);
     }
   }, [axios]);
 
+  const getTicketGraph = useCallback(async () => {
+    try {
+      const response = await axios.get('ticket/graph');
+      setGraph(response.data.data);
+    } catch (error) {
+      console.error('GET_TICKET_GRAPH_ERROR', error);
+    }
+  }, [axios]);
+
   // Mounted data fetching
   useEffect(() => {
-    getTicket();
-  }, [getTicket]);
+    getTicketOverview();
+    getTicketGraph();
+  }, [getTicketGraph, getTicketOverview]);
 
   // Protected routes
   if (user?.role !== 'admin') {
@@ -40,16 +51,13 @@ const ContainerOverview: FC = () => {
   }
 
   return (
-    <section className="max-w-7xl mx-auto">
-      {t('title')}
-      <h1>awdawda</h1>
-      <Tooltip>
-        <TooltipTrigger>Hover</TooltipTrigger>
-        <TooltipContent side="bottom">
-          <p>Add to library</p>
-        </TooltipContent>
-      </Tooltip>
-    </section>
+    <div className="flex-col">
+      <div className="flex-1 p-8 pt-6 space-y-4">
+        <Stats data={overview} />
+        <Chart data={graph} />
+        <SummaryTask data={status} />
+      </div>
+    </div>
   );
 };
 
