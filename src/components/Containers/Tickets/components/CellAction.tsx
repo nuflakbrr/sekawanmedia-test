@@ -18,6 +18,7 @@ interface CellActionProps {
 }
 
 const CellAction: FC<CellActionProps> = ({ data }) => {
+  // Define state
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   return (

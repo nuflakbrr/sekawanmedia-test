@@ -17,6 +17,7 @@ export type ColumnProps = {
   updatedAt: string | Date;
 };
 
+// Format badge
 const formatPriority = (status: string) => {
   switch (status) {
     case 'low':

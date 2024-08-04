@@ -16,8 +16,10 @@ interface TicketsClientProps {
 }
 
 const TicketsClient: FC<TicketsClientProps> = ({ data }) => {
+  // Define state
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
+  // Define translations
   const t = useTranslations('TicketsPage');
 
   return (

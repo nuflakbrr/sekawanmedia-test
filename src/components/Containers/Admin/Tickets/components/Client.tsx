@@ -13,6 +13,7 @@ interface TicketsClientProps {
 }
 
 const TicketsClient: FC<TicketsClientProps> = ({ data }) => {
+  // Define translation
   const t = useTranslations('TicketsPage');
 
   return (

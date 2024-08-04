@@ -22,14 +22,17 @@ interface CellActionProps {
 }
 
 const CellAction: FC<CellActionProps> = ({ data }) => {
+  // Define hooks
+  const [loading, setLoading] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  // Define hooks
   const { toast } = useToast();
   const { accessToken } = useAuth();
   const axios = useAxios(accessToken);
   const router = useRouter();
 
-  const [loading, setLoading] = useState<boolean>(false);
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-
+  // Onupdate data fetching
   const onUpdate = async (dataTable: ColumnProps, status: string) => {
     setLoading(true);
 

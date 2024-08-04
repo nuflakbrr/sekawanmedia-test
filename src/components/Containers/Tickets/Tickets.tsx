@@ -11,12 +11,15 @@ import { ColumnProps } from './components/Columns';
 import TicketsClient from './components/Client';
 
 const ContainerTickets: FC = () => {
+  // Define state
   const [myTickets, setMyTickets] = useState<Ticket[]>([]);
 
+  // Define hooks
   const { accessToken, user } = useAuth();
   const { toast } = useToast();
   const axios = useAxios(accessToken);
 
+  // Data fetching
   const getTicket = useCallback(async () => {
     try {
       setInterval(async () => {
@@ -31,14 +34,17 @@ const ContainerTickets: FC = () => {
     }
   }, [axios, toast, user?.name]);
 
+  // Mounted data fetching
   useEffect(() => {
     getTicket();
   }, [getTicket]);
 
+  // Protected routes
   if (user?.role === 'admin') {
     return redirect('/admin');
   }
 
+  // Formatted data fetching
   const formattedMyTickets: ColumnProps[] = myTickets.map((item) => ({
     id: item.id,
     title: item.title,

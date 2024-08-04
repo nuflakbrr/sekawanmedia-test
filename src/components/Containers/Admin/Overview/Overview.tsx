@@ -15,9 +15,11 @@ const ContainerOverview: FC = () => {
   // Define translations
   const t = useTranslations('HomePage');
 
+  // Define hooks
   const { accessToken, user } = useAuth();
   const axios = useAxios(accessToken);
 
+  // Data fetching
   const getTicket = useCallback(async () => {
     try {
       const response = await axios.get('ticket/graph');
@@ -27,10 +29,12 @@ const ContainerOverview: FC = () => {
     }
   }, [axios]);
 
+  // Mounted data fetching
   useEffect(() => {
     getTicket();
   }, [getTicket]);
 
+  // Protected routes
   if (user?.role !== 'admin') {
     return redirect('/');
   }

@@ -12,11 +12,14 @@ type Props = {
 };
 
 const AuthenticatedPage: FC<Props> = ({ children }) => {
+  // Define translation
   const t = useTranslations('AuthenticatedPage');
 
+  // Define hooks
   const { isLoading, user } = useAuth();
   const { toast } = useToast();
 
+  // Mounted checking user
   useEffect(() => {
     if (!isLoading && !user) {
       toast({
@@ -28,6 +31,7 @@ const AuthenticatedPage: FC<Props> = ({ children }) => {
     }
   }, [isLoading, toast, user, t]);
 
+  // Condition if user trying access protected routes
   if (!isLoading && !user) {
     return (
       <div className="flex items-center justify-center h-screen">
@@ -36,6 +40,7 @@ const AuthenticatedPage: FC<Props> = ({ children }) => {
     );
   }
 
+  // Condition if loading
   if (isLoading) {
     return (
       <div className="flex items-center justify-center h-screen">

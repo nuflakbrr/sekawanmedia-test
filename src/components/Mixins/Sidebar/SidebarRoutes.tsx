@@ -12,9 +12,10 @@ const SidebarRoutes: FC = () => {
 
   // Define hooks
   const pathname = usePathname();
-
+  // Define isAdminPage
   const isAdminPage = pathname?.startsWith('/admin');
 
+  // Admin Routes
   const adminRoutes = [
     {
       href: '/admin',
@@ -36,6 +37,7 @@ const SidebarRoutes: FC = () => {
     },
   ];
 
+  // Guest routes
   const memberRoutes = [
     {
       href: '/',
@@ -51,6 +53,7 @@ const SidebarRoutes: FC = () => {
     },
   ];
 
+  // Checking user role to define routes
   const routes = isAdminPage ? adminRoutes : memberRoutes;
 
   return (

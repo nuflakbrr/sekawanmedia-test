@@ -12,8 +12,10 @@ interface SidebarItemProps {
 }
 
 const SidebarItem: FC<SidebarItemProps> = ({ href, icon: Icon, label }) => {
+  // Define hooks
   const pathname = usePathname();
 
+  // Define isActive
   const isActive = pathname === href;
 
   return (

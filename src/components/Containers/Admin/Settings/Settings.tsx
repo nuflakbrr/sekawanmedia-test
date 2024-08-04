@@ -15,10 +15,13 @@ import TranslationSelect from '@/components/Common/TranslationSelect';
 import ThemeSelect from '@/components/Common/ThemeSelect';
 
 const ContainerSettingsAdmin: FC = () => {
+  // Define translation
   const t = useTranslations('SettingsPage');
 
+  // Define hooks
   const { user } = useAuth();
 
+  // Protected routes
   if (user?.role !== 'admin') {
     return redirect('/');
   }

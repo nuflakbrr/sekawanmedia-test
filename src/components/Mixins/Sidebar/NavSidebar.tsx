@@ -14,14 +14,18 @@ import MobileSidebar from './MobileSidebar';
 import { usePathname } from 'next/navigation';
 
 const NavSidebar: FC = () => {
+  // Define translations
   const t = useTranslations('Tooltip');
 
+  // Define hooks and isAdminPage
   const pathname = usePathname();
   const isAdminPage = pathname?.startsWith('/admin');
 
+  // Data title page
   const titlePageAdmin = ['overview', 'tickets', 'settings'];
   const titlePageGuest = ['tickets', 'settings'];
 
+  // Condition if user is admin
   const titlePage = isAdminPage
     ? titlePageAdmin.find(
       (title) => pathname === `/admin/${title}` || pathname === '/admin',
