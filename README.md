@@ -117,7 +117,7 @@ Jika pada 1 container memiliki beberapa section, maka Anda harus memisahkan dan 
 
 ## Authentikasi
 
-Pada proyek ini sudah menggunakan authentikasi menggunakan React Context. Jika user sudah melakukan authentikasi maka user tidak bisa mengakses halaman `login` atau `register` kembali.
+Pada proyek ini sudah menggunakan authentikasi menggunakan `React Context`. Jika user sudah melakukan authentikasi maka user tidak bisa mengakses halaman `login` atau `register` kembali.
 
 ## Kustomisasi React Hooks
 
