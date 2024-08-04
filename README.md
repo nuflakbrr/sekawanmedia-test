@@ -17,6 +17,8 @@ Pertama, buka terminal lalu eksekusi perintah berikut:
 
 ```bash
 npx degit nuflakbrr/sekawanmedia-test#main <nama_proyek>
+# or
+git clone https://github.com/nuflakbrr/sekawanmedia-test.git <nama_proyek>
 ```
 
 Kedua, install `depedencies` didalam proyek yang sudah Anda klona:
@@ -42,6 +44,18 @@ yarn dev
 ```
 
 Kelima, buka [http://localhost:3000](http://localhost:3000) pada browser Anda dan lihat hasilnya.
+
+Keenam, Masukkan data berikut untuk login:
+
+```
+# admin
+email: admin@gmail.com
+password: password
+
+# guest
+email: guest@gmail.com
+password: password
+```
 
 ## Proyek Arsitektur
 
