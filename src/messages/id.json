@@ -22,6 +22,7 @@
   },
   "TicketsPage": {
     "title": "Semua Tiket",
+    "create": "Buat Tiket",
     "titleTicket": "Judul",
     "customerName": "Nama Pelanggan",
     "content": "Konten",
@@ -47,6 +48,33 @@
   "Tooltip": {
     "search": "Cari",
     "notification": "Notifikasi"
+  },
+  "CellAction": {
+    "title": "Aksi",
+    "detail": "Detail",
+    "approved": "Setujui",
+    "rejected": "Tolak",
+    "success": "Berhasil! Tiket baru saja diubah!",
+    "error": "Ups! Terjadi kesalahan"
+  },
+  "PreviewModal": {
+    "titleModal": "Detail Tiket",
+    "subTitle": "Detail tiket yang Anda pilih.",
+    "customerName": "Nama Pelanggan",
+    "title": "Judul Tiket",
+    "priority": "Prioritas",
+    "status": "Status",
+    "content": "Konten",
+    "createdAt": "Dibuat Pada",
+    "updatedAt": "Diperbarui Pada",
+    "close": "Tutup",
+    "rejected": "Tolak",
+    "approved": "Setujui"
+  },
+  "DataTable": {
+    "nodata": "Tidak ada data.",
+    "prev": "Sebelumnya",
+    "next": "Selanjutnya"
   },
   "AuthenticatedPage": {
     "alert": "Oops! Anda harus login terlebih dahulu.",

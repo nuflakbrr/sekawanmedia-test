@@ -22,6 +22,7 @@
   },
   "TicketsPage": {
     "title": "All Tickets",
+    "create": "Create Ticket",
     "titleTicket": "Title",
     "customerName": "Customer Name",
     "content": "Content",
@@ -47,6 +48,33 @@
   "Tooltip": {
     "search": "Search",
     "notification": "Notification"
+  },
+  "CellAction": {
+    "title": "Action",
+    "detail": "Detail",
+    "approved": "Approve",
+    "rejected": "Reject",
+    "success": "Success! Ticket just updated!",
+    "error": "Oops! Something went wrong"
+  },
+  "PreviewModal": {
+    "titleModal": "Detail Ticket",
+    "subTitle": "Detail ticket your choose.",
+    "customerName": "Customer Name",
+    "title": "Title Ticket",
+    "priority": "Priority",
+    "status": "Status",
+    "content": "Content",
+    "createdAt": "Created At",
+    "updatedAt": "Updated At",
+    "close": "Close",
+    "rejected": "Reject",
+    "approved": "Approve"
+  },
+  "DataTable": {
+    "nodata": "No results.",
+    "prev": "Previous",
+    "next": "Next"
   },
   "AuthenticatedPage": {
     "alert": "Oops! You need to login first.",

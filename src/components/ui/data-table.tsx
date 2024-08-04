@@ -2,6 +2,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import {
   ColumnDef,
   SortingState,
@@ -52,6 +53,8 @@ export function DataTable<TData, TValue>({
       sorting,
     },
   });
+
+  const t = useTranslations('DataTable');
 
   return (
     <div>
@@ -108,7 +111,7 @@ export function DataTable<TData, TValue>({
                   colSpan={columns.length}
                   className="h-24 text-center"
                 >
-                  No results.
+                  {t('nodata')}
                 </TableCell>
               </TableRow>
             )}
@@ -122,7 +125,7 @@ export function DataTable<TData, TValue>({
           onClick={() => table.previousPage()}
           disabled={!table.getCanPreviousPage()}
         >
-          Previous
+          {t('prev')}
         </Button>
         <Button
           variant="outline"
@@ -130,7 +133,7 @@ export function DataTable<TData, TValue>({
           onClick={() => table.nextPage()}
           disabled={!table.getCanNextPage()}
         >
-          Next
+          {t('next')}
         </Button>
       </div>
     </div>

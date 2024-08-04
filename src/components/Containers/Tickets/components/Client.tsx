@@ -30,7 +30,7 @@ const TicketsClient: FC<TicketsClientProps> = ({ data }) => {
           <div className="flex items-center justify-between">
             <Heading title={t('title')} />
             <Button onClick={() => setIsOpen(true)} className="dark:text-white">
-              <Plus className="mr-2 h-4 w-4" /> Buat Ticket
+              <Plus className="mr-2 h-4 w-4" /> {t('create')}
             </Button>
           </div>
         </CardHeader>

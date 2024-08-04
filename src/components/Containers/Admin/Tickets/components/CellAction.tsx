@@ -1,5 +1,6 @@
 'use client';
 import { FC, useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
 import { CircleCheck, CircleX, Info, MoreHorizontal } from 'lucide-react';
 
@@ -26,6 +27,8 @@ const CellAction: FC<CellActionProps> = ({ data }) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
+  const t = useTranslations('CellAction');
+
   // Define hooks
   const { toast } = useToast();
   const { accessToken } = useAuth();
@@ -43,12 +46,12 @@ const CellAction: FC<CellActionProps> = ({ data }) => {
     };
 
     try {
-      const { data } = await axios.put('ticket', sendData);
+      await axios.put('ticket', sendData);
       setLoading(false);
       router.refresh();
-      toast({ description: data.message });
+      toast({ description: t('success') });
     } catch (error) {
-      toast({ description: 'Something went wrong', variant: 'destructive' });
+      toast({ description: t('error'), variant: 'destructive' });
     } finally {
       setLoading(false);
     }
@@ -77,18 +80,18 @@ const CellAction: FC<CellActionProps> = ({ data }) => {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
-          <DropdownMenuLabel>Action</DropdownMenuLabel>
+          <DropdownMenuLabel>{t('title')}</DropdownMenuLabel>
           <DropdownMenuItem onClick={() => setIsOpen(true)}>
             <Info className="h-4 w-4 mr-2" />
-            Detail
+            {t('detail')}
           </DropdownMenuItem>
           <DropdownMenuItem onClick={() => onUpdate(data.id, 'approved')}>
             <CircleCheck className="h-4 w-4 mr-2" />
-            Approve
+            {t('approved')}
           </DropdownMenuItem>
           <DropdownMenuItem onClick={() => onUpdate(data.id, 'rejected')}>
             <CircleX className="h-4 w-4 mr-2" />
-            Rejected
+            {t('rejected')}
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

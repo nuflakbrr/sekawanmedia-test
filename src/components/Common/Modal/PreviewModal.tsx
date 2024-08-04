@@ -1,5 +1,6 @@
 'use client';
 import { FC, useEffect, useState } from 'react';
+import { useTranslations } from 'next-intl';
 
 import { useAuth } from '@/hooks/useAuth';
 import { PreviewModal as PreviewModalProps } from '@/interfaces/modal';
@@ -16,6 +17,8 @@ const PreviewModal: FC<PreviewModalProps> = ({
 }) => {
   // Define state
   const [isMounted, setIsMounted] = useState(false);
+
+  const t = useTranslations('PreviewModal');
 
   // Define Hooks
   const { user } = useAuth();
@@ -59,8 +62,8 @@ const PreviewModal: FC<PreviewModalProps> = ({
 
   return (
     <Modal
-      title="Detail Tiket"
-      description="Detail tiket yang Anda buat."
+      title={t('titleModal')}
+      description={t('subTitle')}
       isOpen={isOpen}
       onClose={onClose}
     >
@@ -68,17 +71,17 @@ const PreviewModal: FC<PreviewModalProps> = ({
         <div className="flex items-center justify-between">
           <div className="space-y-4">
             <div>
-              <p className="text-sm text-gray-500">Nama</p>
+              <p className="text-sm text-gray-500">{t('customerName')}</p>
               <p className="text-sm font-medium">{data.customerName}</p>
             </div>
 
             <div>
-              <p className="text-sm text-gray-500">Judul Tiket</p>
+              <p className="text-sm text-gray-500">{t('title')}</p>
               <p className="text-sm font-medium">{data.title}</p>
             </div>
 
             <div>
-              <p className="text-sm text-gray-500">Prioritas</p>
+              <p className="text-sm text-gray-500">{t('priority')}</p>
               <Badge
                 variant={formatPriority(data.priority)}
                 className="text-sm font-medium capitalize"
@@ -90,7 +93,7 @@ const PreviewModal: FC<PreviewModalProps> = ({
 
           <div className="space-y-4">
             <div>
-              <p className="text-sm text-gray-500">Status</p>
+              <p className="text-sm text-gray-500">{t('status')}</p>
               <Badge
                 variant={formatStatus(data.status)}
                 className="text-sm font-medium capitalize"
@@ -100,33 +103,33 @@ const PreviewModal: FC<PreviewModalProps> = ({
             </div>
 
             <div>
-              <p className="text-sm text-gray-500">Dibuat Pada</p>
+              <p className="text-sm text-gray-500">{t('createdAt')}</p>
               <p className="text-sm font-medium">{data.createdAt as string}</p>
             </div>
 
             <div>
-              <p className="text-sm text-gray-500">Diperbarui Pada</p>
+              <p className="text-sm text-gray-500">{t('updatedAt')}</p>
               <p className="text-sm font-medium">{data.updatedAt as string}</p>
             </div>
           </div>
         </div>
 
         <div>
-          <p className="text-sm text-gray-500">Konten Tiket</p>
+          <p className="text-sm text-gray-500">{t('content')}</p>
           <p className="text-sm font-medium text-justify">{data.content}</p>
         </div>
       </div>
       <div className="pt-6 space-x-2 flex items-center justify-end w-full">
         <Button variant="outline" onClick={onClose}>
-          Tutup
+          {t('close')}
         </Button>
         {user && user.role === 'admin' && (
           <>
             <Button variant="destructive" onClick={onRejected}>
-              Tolak
+              {t('rejected')}
             </Button>
             <Button variant="success" onClick={onApproved}>
-              Setujui
+              {t('approved')}
             </Button>
           </>
         )}

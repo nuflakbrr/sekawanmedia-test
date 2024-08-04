@@ -1,6 +1,7 @@
 'use client';
 import { FC, useState } from 'react';
-import { MoreHorizontal } from 'lucide-react';
+import { useTranslations } from 'next-intl';
+import { Info, MoreHorizontal } from 'lucide-react';
 
 import { ColumnProps } from './Columns';
 import { Button } from '@/components/ui/button';
@@ -21,6 +22,9 @@ const CellAction: FC<CellActionProps> = ({ data }) => {
   // Define state
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
+  // Define translations
+  const t = useTranslations('CellAction');
+
   return (
     <>
       <PreviewModal
@@ -36,9 +40,10 @@ const CellAction: FC<CellActionProps> = ({ data }) => {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
-          <DropdownMenuLabel>Action</DropdownMenuLabel>
+          <DropdownMenuLabel>{t('title')}</DropdownMenuLabel>
           <DropdownMenuItem onClick={() => setIsOpen(true)}>
-            Detail
+            <Info className="h-4 w-4 mr-2" />
+            {t('detail')}
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
