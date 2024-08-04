@@ -14,18 +14,23 @@ const PreviewModal: FC<PreviewModalProps> = ({
   onApproved,
   onRejected,
 }) => {
+  // Define state
   const [isMounted, setIsMounted] = useState(false);
 
+  // Define Hooks
   const { user } = useAuth();
 
+  // Trigger mounted
   useEffect(() => {
     setIsMounted(true);
   }, []);
 
+  // Handle if not mounted
   if (!isMounted) {
     return null;
   }
 
+  // Format badge
   const formatPriority = (status: string) => {
     switch (status) {
       case 'low':

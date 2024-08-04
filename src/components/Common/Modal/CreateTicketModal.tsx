@@ -31,6 +31,7 @@ import {
 import { Textarea } from '@/components/ui/textarea';
 
 const CreateTicketModal: FC<CreateTicketModalProps> = ({ isOpen, onClose }) => {
+  // Define state
   const [isMounted, setIsMounted] = useState<boolean>(false);
 
   // Define hooks
@@ -103,10 +104,12 @@ const CreateTicketModal: FC<CreateTicketModalProps> = ({ isOpen, onClose }) => {
     }
   };
 
+  // Trigger mounted
   useEffect(() => {
     setIsMounted(true);
   }, []);
 
+  // Handle if not mounted
   if (!isMounted) {
     return null;
   }

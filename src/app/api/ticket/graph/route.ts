@@ -2,8 +2,10 @@ import { NextResponse } from 'next/server';
 
 export async function GET(req: Request) {
   try {
+    // Get token
     const token = req.headers.get('Authorization');
 
+    // Protected routes API if user not have token
     if (!token) {
       return NextResponse.json(
         { success: 0, message: 'Unauthorized!' },
@@ -11,6 +13,7 @@ export async function GET(req: Request) {
       );
     }
 
+    // Define data
     const data = [
       { month: 'January', totalData: 54 },
       { month: 'February', totalData: 10 },
@@ -26,8 +29,10 @@ export async function GET(req: Request) {
       { month: 'December', totalData: 67 },
     ];
 
+    // Return response
     return NextResponse.json({ success: 1, data }, { status: 200 });
   } catch (error) {
+    // Handle error
     console.error('TICKET_GRAPH_ERROR', error);
     return NextResponse.json(
       { success: 0, message: 'Internal server error!' },

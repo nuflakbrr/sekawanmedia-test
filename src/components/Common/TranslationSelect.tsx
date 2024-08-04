@@ -14,9 +14,12 @@ import {
 } from '@/components/ui/select';
 
 const TranslationSelect: FC = () => {
+  // Define state
   const [isPending, startTransition] = useTransition();
+  // Define current locale
   const locale = useLocale();
 
+  // Onchange funtion
   function onChange(value: string) {
     const locale = value as Locale;
     startTransition(() => {

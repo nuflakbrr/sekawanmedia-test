@@ -12,9 +12,12 @@ import {
 } from '@/components/ui/select';
 
 const ThemeSelect: FC = () => {
+  // Define translation
   const t = useTranslations('Theme');
+  // Define hooks
   const { setTheme, theme } = useTheme();
 
+  // Onchange function
   function onChange(value: string) {
     const val = value as 'light' | 'dark' | 'system';
     setTheme(val);

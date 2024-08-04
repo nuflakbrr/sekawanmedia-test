@@ -9,8 +9,10 @@ type Props = {
 };
 
 const AuthLayout: FC<Props> = ({ children }) => {
+  // Define hooks
   const { user } = useAuth();
 
+  // Redirect to dashboard if user is authenticated
   useEffect(() => {
     if (user) redirect('/');
   }, [user]);

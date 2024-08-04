@@ -5,8 +5,10 @@ import smoothscroll from 'smoothscroll-polyfill';
 import { cn } from '@/lib/utils';
 
 const ScrollToTop: FC = () => {
+  // Define state
   const [isVisible, setIsVisible] = useState<boolean>(false);
 
+  // Handle visibility
   const toggleVisibility = () => {
     if (window.pageYOffset > 300) {
       setIsVisible(true);
@@ -15,6 +17,7 @@ const ScrollToTop: FC = () => {
     }
   };
 
+  // Handle scroll to top
   const scrollTop = () => {
     smoothscroll.polyfill();
     window.scrollTo({
@@ -23,6 +26,7 @@ const ScrollToTop: FC = () => {
     });
   };
 
+  // Trigger mounted
   useEffect(() => {
     window.addEventListener('scroll', toggleVisibility);
 
