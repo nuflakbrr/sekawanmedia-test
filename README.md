@@ -9,9 +9,7 @@ Ini adalah proyek [Next.js](https://nextjs.org/) di-bootstrap dengan [`create-ne
 - [React.js v18](https://react.dev/)
 - [Tailwindcss v3](https://tailwindcss.com/)
 - [Shadcn UI](https://ui.shadcn.com)
-- [Momen.js v2](https://momentjs.com/)
 - [Axios](https://axios-http.com/docs/intro/)
-- [SWR](https://swr.vercel.app/)
 
 ## Mulai Sekarang
 
