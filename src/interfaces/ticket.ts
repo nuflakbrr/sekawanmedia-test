@@ -5,6 +5,12 @@ export interface TicketOverview {
   totalHold: number;
 }
 
+export interface TicketStatus {
+  totalPending: number;
+  totalApproved: number;
+  totalRejected: number;
+}
+
 export interface TicketGraph {
   month: string;
   totalData: number;
