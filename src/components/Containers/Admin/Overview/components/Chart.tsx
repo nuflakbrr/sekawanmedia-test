@@ -1,5 +1,6 @@
 'use client';
 import { FC } from 'react';
+import { useTranslations } from 'next-intl';
 import { Area, AreaChart, CartesianGrid, XAxis, YAxis } from 'recharts';
 
 import {
@@ -30,12 +31,15 @@ const chartConfig = {
 } satisfies ChartConfig;
 
 const Chart: FC<Props> = ({ data }) => {
+  // Define translations
+  const t = useTranslations('Dashboard');
+
   return (
     <Card>
       <CardHeader className="flex items-center gap-2 space-y-0 border-b py-5 sm:flex-row">
         <div className="grid flex-1 gap-1 text-center sm:text-left">
-          <CardTitle>Grafik Tiket dalam 1 Tahun</CardTitle>
-          <CardDescription>Showing total data per month</CardDescription>
+          <CardTitle>{t('graph.title')}</CardTitle>
+          <CardDescription>{t('graph.subTitle')}</CardDescription>
         </div>
       </CardHeader>
       <CardContent className="px-2 pt-4 sm:px-6 sm:pt-6">

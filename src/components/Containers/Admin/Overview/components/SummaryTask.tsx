@@ -11,12 +11,16 @@ import {
 import { Button } from '@/components/ui/button';
 import { Plus } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
+import { useTranslations } from 'next-intl';
 
 type Props = {
   data: TicketStatus | null;
 };
 
 const SummaryTask: FC<Props> = ({ data }) => {
+  // Define the translations
+  const t = useTranslations('Dashboard');
+
   return (
     <div className="grid grid-cols-2 gap-4">
       <div className="col-span-2 md:col-span-1">
@@ -24,14 +28,12 @@ const SummaryTask: FC<Props> = ({ data }) => {
           <CardHeader className="flex items-center gap-2 space-y-0 border-b py-5 sm:flex-row">
             <div className="w-full flex flex-wrap lg:flex-row items-start justify-between">
               <div>
-                <CardTitle>Ticket Status</CardTitle>
-                <CardDescription>
-                  Showing total data status ticket
-                </CardDescription>
+                <CardTitle>{t('ticketStatus.title')}</CardTitle>
+                <CardDescription>{t('ticketStatus.subTitle')} </CardDescription>
               </div>
               <div>
                 <p className="font-semibold text-sm text-blue-500 cursor-pointer">
-                  View Details
+                  {t('ticketStatus.detail')}
                 </p>
               </div>
             </div>
@@ -59,12 +61,12 @@ const SummaryTask: FC<Props> = ({ data }) => {
           <CardHeader className="flex items-center gap-2 space-y-0 border-b py-5 sm:flex-row">
             <div className="w-full flex items-start flex-wrap lg:flex-row justify-between">
               <div>
-                <CardTitle>Task</CardTitle>
-                <CardDescription>Showing total task for today</CardDescription>
+                <CardTitle>{t('task.title')}</CardTitle>
+                <CardDescription>{t('task.subTitle')}</CardDescription>
               </div>
               <div>
                 <p className="font-semibold text-sm text-blue-500 cursor-pointer">
-                  View All
+                  {t('task.all')}
                 </p>
               </div>
             </div>
@@ -74,8 +76,8 @@ const SummaryTask: FC<Props> = ({ data }) => {
               <li className="flex items-center justify-between border-b py-2 gap-2">
                 <input
                   type="text"
-                  placeholder="Create new task"
-                  className="w-full active:outline-none focus:outline-none"
+                  placeholder={t('task.input')}
+                  className="w-full active:outline-none focus:outline-none dark:bg-background"
                 />
                 <Button size="sm" variant="secondary">
                   <Plus />

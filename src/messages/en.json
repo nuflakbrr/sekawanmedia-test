@@ -30,6 +30,29 @@
     "createdAt": "Created At",
     "action": "Action"
   },
+  "Dashboard": {
+    "stats": {
+      "unresolved": "Unresolved",
+      "overdue": "Overdue",
+      "open": "Open",
+      "onHold": "On Hold"
+    },
+    "graph": {
+      "title": "Ticket Graph in 1 Year",
+      "subTitle": "Showing total data per-month."
+    },
+    "ticketStatus": {
+      "title": "Ticket Status",
+      "subTitle": "Showing total data ticket status.",
+      "detail": "View Details"
+    },
+    "task": {
+      "title": "Task",
+      "subTitle": "Showing total task for today.",
+      "all": "View All",
+      "input": "Create new task"
+    }
+  },
   "Sidebar": {
     "overview": "Overview",
     "tickets": "Tickets",
@@ -88,8 +111,5 @@
   "AuthenticatedPage": {
     "alert": "Oops! You need to login first.",
     "text": "Redirecting to login page"
-  },
-  "HomePage": {
-    "title": "Hello World!"
   }
 }

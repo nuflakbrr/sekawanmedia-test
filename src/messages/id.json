@@ -30,6 +30,29 @@
     "createdAt": "Dibuat Pada",
     "action": "Aksi"
   },
+  "Dashboard": {
+    "stats": {
+      "unresolved": "Belum diselesaikan",
+      "overdue": "Terlambat",
+      "open": "Terbuka",
+      "onHold": "Ditunda"
+    },
+    "graph": {
+      "title": "Grafik Tiket dalam 1 Tahun",
+      "subTitle": "Menampilkan total data per-bulan."
+    },
+    "ticketStatus": {
+      "title": "Status Tiket",
+      "subTitle": "Menampilkan total data status tiket.",
+      "detail": "Lihat Detail"
+    },
+    "task": {
+      "title": "Tugas",
+      "subTitle": "Menampilkan total tugas untuk hari ini.",
+      "all": "Lihat Semua",
+      "input": "Buat tugas baru"
+    }
+  },
   "Sidebar": {
     "overview": "Ringkasan",
     "tickets": "Tiket",
@@ -88,8 +111,5 @@
   "AuthenticatedPage": {
     "alert": "Oops! Anda harus login terlebih dahulu.",
     "text": "Mengarahkan ke halaman login"
-  },
-  "HomePage": {
-    "title": "Halo Dunia!"
   }
 }
